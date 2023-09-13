@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Excel_Opened_Sum" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1208,1962" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Excel_Formulas" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1208,1962" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -24,10 +24,10 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
       <x:String>UiPath.Excel</x:String>
       <x:String>UiPath.Excel.Activities.Business</x:String>
       <x:String>UiPath.Excel.Model</x:String>
-      <x:String>System.Reflection</x:String>
       <x:String>UiPath.Shared.Activities.Business</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
@@ -53,13 +53,17 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Console</AssemblyReference>
@@ -68,15 +72,10 @@
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
-      <AssemblyReference>UiPath-ExcelSum.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Excel_Opened_Sum" sap:VirtualizedContainerService.HintSize="722,1897" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Excel_Formulas" sap:VirtualizedContainerService.HintSize="722,1897" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="fileName" />
     </Sequence.Variables>
@@ -93,26 +92,26 @@
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">"C:\\Users\\tnegherb\\OneDrive - Capgemini\\Documents\\UiPath\\UiPath-ExcelSum\\Results\\Result " + DateTime.Now.ToString("yyyyMMdd HHmmss") + ".xlsx"</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"C:\\Users\\tnegherb\\OneDrive - Capgemini\\Documents\\UiPath\\UiPath-ExcelSum\\Results\\Result " + DateTime.Now.ToString("yyyyMMdd HHmmss") + ".xlsx"</CSharpValue>
         </InArgument>
       </Assign.Value>
     </Assign>
     <ui:CopyFile ContinueOnError="{x:Null}" DisplayName="Copy File - Template file to Results file" sap:VirtualizedContainerService.HintSize="660,154" sap2010:WorkflowViewState.IdRef="CopyFile_1" Path="Template\\Sample Columns.xlsx">
       <ui:CopyFile.Destination>
         <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">fileName</CSharpValue>
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">fileName</CSharpValue>
         </InArgument>
       </ui:CopyFile.Destination>
     </ui:CopyFile>
     <ui:LogMessage DisplayName="Log Message - Template file copied" sap:VirtualizedContainerService.HintSize="660,141" sap2010:WorkflowViewState.IdRef="LogMessage_1">
       <ui:LogMessage.Level>
         <InArgument x:TypeArguments="ui:LogLevel">
-          <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">UiPath.Core.Activities.LogLevel.Info</CSharpValue>
+          <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">UiPath.Core.Activities.LogLevel.Info</CSharpValue>
         </InArgument>
       </ui:LogMessage.Level>
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">"Template file was copied to the Results folder."</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">"Template file was copied to the Results folder."</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
@@ -122,21 +121,21 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Process Results file" sap:VirtualizedContainerService.HintSize="626,1202" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do - Process Results file" sap:VirtualizedContainerService.HintSize="626,1202" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - Opening Results file and processing" sap:VirtualizedContainerService.HintSize="564,141" sap2010:WorkflowViewState.IdRef="LogMessage_2">
+            <ui:LogMessage DisplayName="Log Message - Opening Results file and processing" sap:VirtualizedContainerService.HintSize="564,141" sap2010:WorkflowViewState.IdRef="LogMessage_6">
               <ui:LogMessage.Level>
                 <InArgument x:TypeArguments="ui:LogLevel">
-                  <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">UiPath.Core.Activities.LogLevel.Info</CSharpValue>
+                  <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">UiPath.Core.Activities.LogLevel.Info</CSharpValue>
                 </InArgument>
               </ui:LogMessage.Level>
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
-                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">"Opening Results file and processing."</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">"Opening Results file and processing."</CSharpValue>
                 </InArgument>
               </ui:LogMessage.Message>
             </ui:LogMessage>
@@ -146,7 +145,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                   </ActivityAction.Argument>
-                  <ueab:ExcelForEachRowX DisplayName="For Each Excel Row - Results file" EmptyRowBehavior="Stop" HasHeaders="False" sap:VirtualizedContainerService.HintSize="530,641" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_2" SaveAfterEachRow="False">
+                  <ueab:ExcelForEachRowX DisplayName="For Each Excel Row - Results file" EmptyRowBehavior="Stop" HasHeaders="False" sap:VirtualizedContainerService.HintSize="530,641" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_1" SaveAfterEachRow="False">
                     <ueab:ExcelForEachRowX.Body>
                       <ActivityAction x:TypeArguments="ue:CurrentRowQuickHandle, x:Int32">
                         <ActivityAction.Argument1>
@@ -155,33 +154,33 @@
                         <ActivityAction.Argument2>
                           <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                         </ActivityAction.Argument2>
-                        <Sequence DisplayName="Do - Adding values and writing result" sap:VirtualizedContainerService.HintSize="496,451" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence DisplayName="Do - Adding values and writing result" sap:VirtualizedContainerService.HintSize="496,451" sap2010:WorkflowViewState.IdRef="Sequence_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ueab:WriteCellX DisplayName="Write Cell - Get values A and B and writes at C" sap:VirtualizedContainerService.HintSize="434,159" sap2010:WorkflowViewState.IdRef="WriteCellX_4">
+                          <ueab:WriteCellX DisplayName="Write Cell - Get values A and B and writes at C" sap:VirtualizedContainerService.HintSize="434,159" sap2010:WorkflowViewState.IdRef="WriteCellX_1">
                             <ueab:WriteCellX.Cell>
                               <InArgument x:TypeArguments="ue:IReadWriteCellRef">
-                                <CSharpValue x:TypeArguments="ue:IReadWriteCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">CurrentRow["C"]</CSharpValue>
+                                <CSharpValue x:TypeArguments="ue:IReadWriteCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">CurrentRow["C"]</CSharpValue>
                               </InArgument>
                             </ueab:WriteCellX.Cell>
                             <ueab:WriteCellX.Value>
                               <InArgument x:TypeArguments="x:Object">
-                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">CurrentRow["A"].Int32Value + CurrentRow["B"].Int32Value</CSharpValue>
+                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">"=A" + CurrentIndex + "+B" + CurrentIndex</CSharpValue>
                               </InArgument>
                             </ueab:WriteCellX.Value>
                           </ueab:WriteCellX>
                           <ui:LogMessage DisplayName="Log Message - Sum result" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_3">
                             <ui:LogMessage.Level>
                               <InArgument x:TypeArguments="ui:LogLevel">
-                                <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">UiPath.Core.Activities.LogLevel.Info</CSharpValue>
+                                <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">UiPath.Core.Activities.LogLevel.Info</CSharpValue>
                               </InArgument>
                             </ui:LogMessage.Level>
                             <ui:LogMessage.Message>
                               <InArgument x:TypeArguments="x:Object">
-                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">"Values 'A': " + CurrentRow["A"].StringValue + " and 'B': " + CurrentRow["B"].StringValue + " sum resulted in 'C': " + (CurrentRow["A"].Int32Value + CurrentRow["B"].Int32Value).ToString()</CSharpValue>
+                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">"Values 'A': " + CurrentRow["A"].StringValue + " and 'B': " + CurrentRow["B"].StringValue + " sum resulted in 'C': " + (CurrentRow["A"].Int32Value + CurrentRow["B"].Int32Value).ToString()</CSharpValue>
                               </InArgument>
                             </ui:LogMessage.Message>
                           </ui:LogMessage>
@@ -190,7 +189,7 @@
                     </ueab:ExcelForEachRowX.Body>
                     <ueab:ExcelForEachRowX.Range>
                       <InArgument x:TypeArguments="ue:IReadRangeRef">
-                        <CSharpValue x:TypeArguments="ue:IReadRangeRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">Excel.Sheet["Sheet1"].Range["A:C"]</CSharpValue>
+                        <CSharpValue x:TypeArguments="ue:IReadRangeRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">Excel.Sheet["Sheet1"].Range["A:C"]</CSharpValue>
                       </InArgument>
                     </ueab:ExcelForEachRowX.Range>
                     <sap:WorkflowViewStateService.ViewState>
@@ -210,7 +209,7 @@
               </sap:WorkflowViewStateService.ViewState>
               <ueab:ExcelApplicationCard.WorkbookPath>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">fileName</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">fileName</CSharpValue>
                 </InArgument>
               </ueab:ExcelApplicationCard.WorkbookPath>
             </ueab:ExcelApplicationCard>
